@@ -4,7 +4,7 @@ Unit tests for transformer module
 import pytest
 import pandas as pd
 import numpy as np
-from modules.transformer import (
+from src.transformer import (
     map_country_id,
     map_priority,
     map_device_status,

@@ -1,23 +1,18 @@
-"""
-QA Global Automation Coverage Dashboard
-Main application file
-"""
 import streamlit as st
 import pandas as pd
 import logging
 from datetime import datetime
-
-from modules.config import get_bu_names, get_bu_config
-from modules.connector import fetch_data_recursive, validate_credentials
-from modules.transformer import process
-from modules.metrics import (
+from src.config import get_bu_names, get_bu_config
+from src.connector import fetch_data_recursive, validate_credentials
+from src.transformer import process
+from src.metrics import (
     calculate_overall_metrics,
     calculate_testim_metrics,
     calculate_device_metrics,
     calculate_epic_metrics,
     filter_epic_by_search
 )
-from modules.visualizations import (
+from src.visualizations import (
     create_framework_pie_chart,
     create_testim_status_pie,
     create_testim_device_bar,
@@ -26,11 +21,12 @@ from modules.visualizations import (
     create_epic_top_bottom_bars,
     create_epic_complete_stacked_bar
 )
-from modules.exporter import (
+from src.exporter import (
     export_complete_data_to_excel,
     export_epic_data_to_excel,
     get_export_filename
 )
+from src.constants import APP_VERSION, APP_NAME, HEALTH_CHECK_QUERY_PARAM, HEALTH_CHECK_VALUE
 
 # Configure logging
 logging.basicConfig(
@@ -38,6 +34,16 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Health Check Endpoint - must be before page config
+if st.query_params.get(HEALTH_CHECK_QUERY_PARAM) == HEALTH_CHECK_VALUE:
+    st.json({
+        "status": "healthy",
+        "app": APP_NAME,
+        "version": APP_VERSION,
+        "timestamp": datetime.now().isoformat()
+    })
+    st.stop()
 
 # Page config
 st.set_page_config(
@@ -51,7 +57,7 @@ st.set_page_config(
 st.markdown("""
 <style>
     .stMetric {
-        background-color: #f0f2f6;
+        background-color: #00000000;
         padding: 10px;
         border-radius: 5px;
     }

@@ -3,7 +3,7 @@ Unit tests for metrics module
 """
 import pytest
 import pandas as pd
-from modules.metrics import (
+from src.metrics import (
     calculate_overall_metrics,
     calculate_testim_metrics,
     calculate_device_metrics,
