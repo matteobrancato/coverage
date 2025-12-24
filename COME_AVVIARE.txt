@@ -1,0 +1,39 @@
+========================================
+  QA COVERAGE DASHBOARD - AVVIO
+========================================
+
+METODO 1 (FACILE):
+  → Doppio click su: RUN_DASHBOARD.bat
+
+METODO 2 (Da PyCharm Terminal):
+  → .venv\Scripts\streamlit.exe run dashboard.py
+
+METODO 3 (Da riga di comando):
+  → cd C:\Users\mbrancato\PyCharm\Automation\Report\coverage
+  → .venv\Scripts\streamlit.exe run dashboard.py
+
+----------------------------------------
+
+PRIMA DI AVVIARE:
+  1. Copia: .streamlit\secrets.toml.example
+  2. In: .streamlit\secrets.toml
+  3. Modifica con le tue credenziali TestRail
+
+----------------------------------------
+
+SI APRE AUTOMATICAMENTE SU:
+  http://localhost:8501
+
+----------------------------------------
+
+FILE PRINCIPALE:
+  dashboard.py
+
+DOCUMENTAZIONE:
+  - LEGGIMI.md (italiano, guida rapida)
+  - START_HERE.md (italiano, guida completa)
+  - QUICK_START_GUIDE.md (inglese)
+
+----------------------------------------
+
+TUTTO INSTALLATO E PRONTO!
